@@ -5,7 +5,6 @@ import {store} from './src/Redux/Store';
 import ScreenOne from './src/ScreenOne';
 import Tic from './src/modules/Home/Tic';
 import Shimmer from './src/modules/Shimmer/Shimmer';
-import VideoCalling from './src/modules/Video/VideoCalling';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import buyu from './src/modules/BuyU';
