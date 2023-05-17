@@ -13,6 +13,8 @@ type Props = {
   extraMainView?: ViewStyle;
   onPress?: any;
   sampleNumber?: any;
+  disablity?: boolean;
+  emptyBox?:boolean
 };
 const Sample = (props: Props) => {
   const {extraMainView, onPress, sampleNumber} = props;
@@ -34,27 +36,19 @@ const Sample = (props: Props) => {
   return (
     <View aria-disabled={false} style={[styles.mainView, extraMainView]}>
       <TouchableOpacity
-        disabled={disabledCount}
+        disabled={disabledCount || props.disablity}
         onPress={onpress}
         activeOpacity={0.7}
         style={{
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        {empty ? (
+        {empty || props.emptyBox ? (
           <View style={{width: 80, height: 80}}></View>
         ) : circle ? (
-          // <Image source={require('../assets/circle.png')} />
-          <Text style= {{
-            fontSize: 100,
-            bottom: 20
-          }}>o</Text>
+          <Image source={require('../assets/circle.png')} />
         ) : (
-          // <Image source={require('../assets/close.png')} />
-          <Text style= {{
-            fontSize: 90,
-            bottom: 10
-          }}>x</Text>
+          <Image source={require('../assets/close.png')} />
         )}
       </TouchableOpacity>
     </View>
@@ -65,7 +59,6 @@ export default Sample;
 
 const styles = StyleSheet.create({
   mainView: {
-    // borderWidth: 2,
     height: 100,
     width: 100,
     alignItems: 'center',
@@ -76,5 +69,5 @@ const styles = StyleSheet.create({
  * [ '', '', '']
  * [ '', '', '']
  * [ '', '', '']
- * 
+ *
  */

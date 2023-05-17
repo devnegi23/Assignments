@@ -8,8 +8,12 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import Sample from '../../components/Sample';
+import RNRestart from 'react-native-restart';
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const FontSize = 40;
+const TextMarginBottom = 20;
+const LineTop = FontSize + TextMarginBottom - 10;
 
 const Tic = () => {
   const [count, setCount] = useState(1);
@@ -40,7 +44,9 @@ const Tic = () => {
   };
 
   const onclick = () => {
-    setLoader(!loader);
+    // setLoader(!loader);
+    RNRestart.restart();
+    // setEmpty(false);
   };
   const resetPress = () => {
     setCount(1);
@@ -80,182 +86,107 @@ const Tic = () => {
   const diag2Cross =
     sample3 === 'cross' && sample5 === 'cross' && sample7 === 'cross';
 
+  const disablity =
+    row1Circle ||
+    row2Circle ||
+    row3Circle ||
+    col1Circle ||
+    col2Circle ||
+    col3Circle ||
+    diag1Circle ||
+    diag2Circle ||
+    row1Cross ||
+    row2Cross ||
+    row3Cross ||
+    col1Cross ||
+    col2Cross ||
+    col3Cross ||
+    diag1Cross ||
+    diag2Cross;
+
   return (
-    <SafeAreaView
-      style={{flex: 1, backgroundColor: 'orange', alignItems: 'center'}}>
-      <Text>Tic Tac Toe</Text>
+    <SafeAreaView style={styles.mainView}>
+      <Text style={styles.tic_tac_toe}>Tic Tac Toe</Text>
       {row1Circle && (
-        <View
-          style={{
-            borderWidth: 2,
-            width: 300,
-            borderColor: 'red',
-            position: 'absolute',
-            top: 115,
-          }}></View>
+        <View style={[styles.SingleWidthView, {top: 115 + LineTop}]}></View>
       )}
       {row2Circle && (
-        <View
-          style={{
-            borderWidth: 2,
-            width: 300,
-            borderColor: 'red',
-            position: 'absolute',
-            top: 215,
-          }}></View>
+        <View style={[styles.SingleWidthView, {top: 215 + LineTop}]}></View>
       )}
       {row3Circle && (
-        <View
-          style={{
-            borderWidth: 2,
-            width: 300,
-            borderColor: 'red',
-            position: 'absolute',
-            top: 315,
-          }}></View>
+        <View style={[styles.SingleWidthView, {top: 315 + LineTop}]}></View>
       )}
       {col1Circle && (
         <View
-          style={{
-            borderWidth: 2,
-            height: 300,
-            borderColor: 'red',
-            position: 'absolute',
-            top: 70,
-            left: 85,
-          }}></View>
+          style={[
+            styles.SingleHeightView,
+            {top: 70 + LineTop, left: 85},
+          ]}></View>
       )}
       {col2Circle && (
-        <View
-          style={{
-            borderWidth: 2,
-            height: 300,
-            borderColor: 'red',
-            position: 'absolute',
-            top: 70,
-          }}></View>
+        <View style={[styles.SingleHeightView, {top: 70 + LineTop}]}></View>
       )}
       {col3Circle && (
         <View
-          style={{
-            borderWidth: 2,
-            height: 300,
-            borderColor: 'red',
-            position: 'absolute',
-            top: 70,
-            right: 85,
-          }}></View>
+          style={[
+            styles.SingleHeightView,
+            {top: 70 + LineTop, right: 85},
+          ]}></View>
       )}
       {diag2Circle && (
         <View
-          style={{
-            borderWidth: 2,
-            height: 400,
-            borderColor: 'red',
-            position: 'absolute',
-            top: 20,
-            // right: 85,
-            transform: [{rotate: '45deg'}],
-          }}></View>
+          style={[
+            styles.SingleDiagonalHeightView,
+            {top: 20 + LineTop, transform: [{rotate: '45deg'}]},
+          ]}></View>
       )}
       {diag1Circle && (
         <View
-          style={{
-            borderWidth: 2,
-            height: 400,
-            borderColor: 'red',
-            position: 'absolute',
-            top: 20,
-            // right: 85,
-            transform: [{rotate: '135deg'}],
-          }}></View>
+          style={[
+            styles.SingleDiagonalHeightView,
+            {top: 20 + LineTop, transform: [{rotate: '135deg'}]},
+          ]}></View>
       )}
 
       {row1Cross && (
-        <View
-          style={{
-            borderWidth: 2,
-            width: 300,
-            borderColor: 'red',
-            position: 'absolute',
-            top: 115,
-          }}></View>
+        <View style={[styles.SingleWidthView, {top: 115 + LineTop}]}></View>
       )}
       {row2Cross && (
-        <View
-          style={{
-            borderWidth: 2,
-            width: 300,
-            borderColor: 'red',
-            position: 'absolute',
-            top: 215,
-          }}></View>
+        <View style={[styles.SingleWidthView, {top: 215 + LineTop}]}></View>
       )}
       {row3Cross && (
-        <View
-          style={{
-            borderWidth: 2,
-            width: 300,
-            borderColor: 'red',
-            position: 'absolute',
-            top: 315,
-          }}></View>
+        <View style={[styles.SingleWidthView, {top: 315 + LineTop}]}></View>
       )}
       {col1Cross && (
         <View
-          style={{
-            borderWidth: 2,
-            height: 300,
-            borderColor: 'red',
-            position: 'absolute',
-            top: 70,
-            left: 85,
-          }}></View>
+          style={[
+            styles.SingleHeightView,
+            {top: 70 + LineTop, left: 85},
+          ]}></View>
       )}
       {col2Cross && (
-        <View
-          style={{
-            borderWidth: 2,
-            height: 300,
-            borderColor: 'red',
-            position: 'absolute',
-            top: 70,
-          }}></View>
+        <View style={[styles.SingleHeightView, {top: 70 + LineTop}]}></View>
       )}
       {col3Cross && (
         <View
-          style={{
-            borderWidth: 2,
-            height: 300,
-            borderColor: 'red',
-            position: 'absolute',
-            top: 70,
-            right: 85,
-          }}></View>
+          style={[
+            styles.SingleHeightView,
+            {top: 70 + LineTop, right: 85},
+          ]}></View>
       )}
       {diag2Cross && (
         <View
-          style={{
-            borderWidth: 2,
-            height: 400,
-            borderColor: 'red',
-            position: 'absolute',
-            top: 20,
-            // right: 85,
-            transform: [{rotate: '45deg'}],
-          }}></View>
+          style={[
+            styles.SingleDiagonalHeightView,
+            {top: 20 + LineTop, transform: [{rotate: '45deg'}]},
+          ]}></View>
       )}
       {diag1Cross && (
         <View
-          style={{
-            borderWidth: 2,
-            height: 400,
-            borderColor: 'red',
-            position: 'absolute',
-            top: 20,
-            // right: 85,
-            transform: [{rotate: '135deg'}],
-          }}></View>
+          style={[
+            styles.SingleDiagonalHeightView,
+            {top: 20 + LineTop, transform: [{rotate: '135deg'}]},
+          ]}></View>
       )}
       <View
         style={{
@@ -265,7 +196,9 @@ const Tic = () => {
         }}>
         {arr?.map((e, index) => (
           <Sample
+            disablity={disablity}
             sampleNumber={count}
+            emptyBox={!empty}
             extraMainView={{
               borderRightWidth: index % 3 != 2 ? 2 : 0,
               borderTopWidth: index > 2 ? 2 : 0,
@@ -282,7 +215,7 @@ const Tic = () => {
           borderWidth: 1,
           justifyContent: 'center',
           alignItems: 'center',
-          borderRadius:20
+          borderRadius: 20,
         }}>
         {loader ? (
           <ActivityIndicator size="small" color="black" />
@@ -298,4 +231,39 @@ const Tic = () => {
 
 export default Tic;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  mainView: {
+    flex: 1,
+    backgroundColor: 'orange',
+    alignItems: 'center',
+  },
+  tic_tac_toe: {
+    fontSize: FontSize,
+    fontWeight: 'bold',
+    color: 'black',
+    marginBottom: TextMarginBottom,
+  },
+  SingleWidthView: {
+    borderWidth: 2,
+    width: 300,
+    borderColor: 'red',
+    position: 'absolute',
+  },
+  SingleHeightView: {
+    borderWidth: 2,
+    height: 300,
+    borderColor: 'red',
+    position: 'absolute',
+  },
+  SingleDiagonalHeightView: {
+    borderWidth: 2,
+    height: 400,
+    borderColor: 'red',
+    position: 'absolute',
+  },
+  mainGridStyle: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+});

@@ -24,8 +24,8 @@ const App = () => {
     <View style={{flex: 1}}>
       <NavigationContainer>
         <STACK.Navigator screenOptions={{headerShown: false}}>
-          <STACK.Screen name="buyu" component={buyu} />
           <STACK.Screen name="Tic" component={Tic} />
+          <STACK.Screen name="buyu" component={buyu} />
           <STACK.Screen name="ScreenOne" component={ScreenOne} />
         </STACK.Navigator>
       </NavigationContainer>
